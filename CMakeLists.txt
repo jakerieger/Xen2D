@@ -23,5 +23,6 @@ set(MODULES_ROOT ${CODE_ROOT}/Modules)
 set(VENDOR_ROOT ${CODE_ROOT}/Vendor)
 
 add_subdirectory(${MODULES_ROOT}/CrashHandler)
-add_subdirectory(${MODULES_ROOT}/XenEngine)
+add_subdirectory(${MODULES_ROOT}/Engine)
+add_subdirectory(${MODULES_ROOT}/XenPAK)
 add_subdirectory(${CODE_ROOT}/Sandbox)
