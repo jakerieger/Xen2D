@@ -5,6 +5,7 @@
 #pragma once
 
 #include <cstdint>
+#include <stdexcept>
 
 namespace Xen {
     using u8   = uint8_t;
@@ -41,4 +42,17 @@ namespace Xen {
     constexpr T RCAST(U Value) {
         return reinterpret_cast<T>(Value);
     }
-}
+
+    class EngineException : public std::runtime_error {
+    public:
+        using std::runtime_error::runtime_error;
+    };
+
+#define Engine_MakeExceptionStr(Msg) std::format("(EXCEPTION) XenEngine::{} - {}", __func__, Msg)
+
+#define Engine_MakeException(Name)                                                                                     \
+    class Name : public Xen::EngineException {                                                                         \
+    public:                                                                                                            \
+        using Xen::EngineException::EngineException;                                                                   \
+    }
+}  // namespace Xen
